@@ -1,0 +1,21 @@
+syntax = "proto3";
+option go_package = "./" ;
+package pb;
+
+message Requst {
+    string group = 1;
+    string key = 2;
+}
+
+message ResponseForGet {
+    bytes value = 1;
+}
+
+message ResponseForDelete {
+    bool value = 1;
+}
+
+service Groupcache {
+    rpc Get(Requst) returns (ResponseForGet);
+    rpc Delete(Requst) returns (ResponseForDelete);
+}
